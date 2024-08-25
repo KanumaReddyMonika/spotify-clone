@@ -1,0 +1,46 @@
+.player {
+  width: 50%;
+  padding: 4rem 6rem;
+  color: #fff;
+}
+
+.player-container {
+  margin: 0 auto;
+  width: 80%;
+  height: 70%;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.artist {
+  font-size: 1rem;
+  opacity: 60%;
+  margin: 0.5rem 0 2.5rem;
+}
+
+.cover-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.player-container input {
+  width: 100%;
+  margin: 1rem 0 1.5rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controls > div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}

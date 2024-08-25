@@ -1,0 +1,6 @@
+.player-contianer {
+  height: 100vh;
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
+}
