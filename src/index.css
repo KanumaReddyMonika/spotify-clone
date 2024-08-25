@@ -13,3 +13,65 @@ button {
   background-color: transparent;
   border: none;
 }
+
+
+.tab-button{
+  opacity:0.5;
+}
+
+.active-tab {
+  opacity:1;
+}
+
+.main-player-container{
+  width:100%;
+  display: flex;
+  margin: 24px;
+  overflow: auto;
+
+  .player, .sidebar {
+    flex-grow:1;
+  }
+
+  @media screen and (max-width:720px) {
+    flex-direction: column-reverse;
+    padding:12px;
+
+    .song-list-view{
+      width:100%;
+    }
+
+  .player, .sidebar {
+    padding: 0 !important;
+    width:100%;
+    min-height:max-content;
+  }
+
+  .player-container{
+    height:60%;
+    width: 100%;
+  }
+
+  .player-playing{
+    min-height: 600px;
+  }
+
+  .logo{
+    width:100%;
+    flex-direction:unset;
+    margin:12px;
+    margin-top: 24px;
+    padding: 24px;
+    align-items: center;
+  }
+  .logo-img{
+    flex-shrink:0;
+    min-width:10rem;
+  }
+
+  .profile-img{
+    position: relative;
+    bottom: unset;
+  }
+  }
+}

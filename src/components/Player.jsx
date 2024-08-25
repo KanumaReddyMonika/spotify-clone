@@ -7,10 +7,9 @@ import pause from "../../public/pasue.png";
 import "./Player.css";
 import { useEffect, useRef, useState } from "react";
 
-export default function Player({ song }) {
-  console.log(song);
+
+export default function Player({ song, onNext, onPrevious, isPlaying, setIsPlaying }) {
   const audioRef = useRef();
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -29,6 +28,14 @@ export default function Player({ song }) {
     audioRef.current?.addEventListener("timeupdate", handleTimeUpdate);
   }, []);
 
+  useEffect(() => {
+    if(audioRef.current && isPlaying){
+      const audio = audioRef.current;
+       audio.play();
+    }
+  }, [isPlaying])
+  
+
   const handlePlayPause = () => {
     const audio = audioRef.current;
     if (isPlaying) {
@@ -46,7 +53,7 @@ export default function Player({ song }) {
   };
 
   return (
-    <div className="player">
+    <div className={`player ${song? 'player-playing' : ''}`}>
       {song && (
         <div className="player-container">
           <p className="title">{song?.name}</p>
@@ -63,13 +70,13 @@ export default function Player({ song }) {
             onChange={handleRangeChange}
             className="progress-bar"
           />
-          <audio src={song.url} ref={audioRef}></audio>
+          <audio style={{display:"none"}} controls src={song.url} ref={audioRef}></audio>
           <div className="controls">
             <button>
               <img src={menu} alt="menu-button" />
             </button>
             <div className="main-controls">
-              <button>
+              <button onClick={onPrevious}>
                 <img src={back} alt="back-button" />
               </button>
               <button onClick={handlePlayPause}>
@@ -80,7 +87,7 @@ export default function Player({ song }) {
                 )}
               </button>
 
-              <button>
+              <button onClick={onNext}>
                 <img src={next} alt="next-button" />
               </button>
             </div>
